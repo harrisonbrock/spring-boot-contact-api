@@ -28,13 +28,16 @@ public class ContactController {
 
     @RequestMapping(value = {"/", ""}, method = RequestMethod.POST)
     public Contacts createContact(@Valid @RequestBody Contacts contacts) {
-        contactRepository.save((contacts));
-        return contacts;
+        return contactRepository.save((contacts));
     }
 
     @RequestMapping(value = {"/{id}"}, method = RequestMethod.PUT)
     public Contacts updateContact(@PathVariable("id") Contacts contacts) {
-        contactRepository.save((contacts));
-        return contacts;
+        return contactRepository.save((contacts));
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void deleteContact(@PathVariable("id") String id) {
+        contactRepository.deleteById(id);
     }
 }
